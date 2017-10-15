@@ -66,17 +66,6 @@ namespace QlikAuthentication.QlikAuthentication
             return result;
         }
 
-        public SessionResponse GetResponse()
-        {
-            SessionResponse result = null;
-            Stream stream = Execute(RequestType.Session);
-            if (stream != null)
-            {
-                result = JsonConvert.DeserializeObject<SessionResponse>(new StreamReader(stream).ReadToEnd());
-            }
-            return result;
-        }
-
         private Stream Execute(RequestType reqType)
         {            
             string endPoint = string.Empty;
