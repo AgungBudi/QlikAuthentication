@@ -131,13 +131,5 @@ namespace QlikAuthentication.QlikAuthentication
 
             return new string(chars);
         }
-
-        private Uri CombineUri(string baseUri, string relativeOrAbsoluteUri)
-        {
-            if (!baseUri.EndsWith("/"))
-                baseUri += "/";
-
-            return new Uri(new Uri(baseUri), relativeOrAbsoluteUri);
-        }
     }
 }

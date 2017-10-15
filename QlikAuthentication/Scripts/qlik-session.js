@@ -6,7 +6,7 @@
         if (form.valid()) {
             $.ajax({
                 type: 'POST',
-                url: 'QlikSession/RequestSession',
+                url: homeUrl + '/QlikSession/RequestSession',
                 data: form.serialize(),
                 success: function (response) {
                     $('.qlik-url').val(response);
