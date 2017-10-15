@@ -1,0 +1,79 @@
+﻿@model QlikAuthentication.Models.QlikSessionViewModel
+@{
+    ViewBag.Title = "Qlik Session Authentication";
+}
+@section Scripts {
+    @Scripts.Render("~/Scripts/qlik-session.js");
+}
+<div class="jumbotron">
+    <h1>Qlik Authentication - Session</h1>
+    <h3>Injecting session cookies only works if QlikSense is a sub domain of this web-app</h3>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { id = "qlik-session", enctype = "multipart/form-data" }))
+        {
+            <div class="row form-group">
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.Server, new { @class = "control-label field-required" })
+                    @Html.EditorFor(model => model.Server, new { htmlAttributes = new { @class = "form-control", @placeholder = "https://172.19.13.100" } })
+                    @Html.ValidationMessageFor(model => model.Server, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.Port, new { @class = "control-label field-required" })
+                    @Html.EditorFor(model => model.Port, new { htmlAttributes = new { @class = "form-control", @placeholder = "4243" } })
+                    @Html.ValidationMessageFor(model => model.Port, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.VirtualProxy, new { @class = "control-label field-required" })
+                    @Html.EditorFor(model => model.VirtualProxy, new { htmlAttributes = new { @class = "form-control", @placeholder = "detectr" } })
+                    @Html.ValidationMessageFor(model => model.VirtualProxy, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.Certificate, new { @class = "control-label field-required" })
+                    @Html.EditorFor(model => model.Certificate, new { htmlAttributes = new { @class = "form-control", @placeholder = "auth30" } })
+                    @Html.ValidationMessageFor(model => model.Certificate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-8">
+                    @Html.LabelFor(model => model.SessionId, new { @class = "control-label field-required" })
+                    @Html.EditorFor(model => model.SessionId, new { htmlAttributes = new { @class = "form-control session-id", @placeholder = "" } })
+                    @Html.ValidationMessageFor(model => model.SessionId, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-4">
+                    @Html.Label("Create a Session", new { @class = "control-label" })
+                    <input type="button" id="btn-session" value="Get Session" class="form-control btn btn-primary" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.UserDirectory, new { @class = "control-label field-required" })
+                    @Html.EditorFor(model => model.UserDirectory, new { htmlAttributes = new { @class = "form-control", @placeholder = "MITRAIS" } })
+                    @Html.ValidationMessageFor(model => model.UserDirectory, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.User, new { @class = "control-label field-required" })
+                    @Html.EditorFor(model => model.User, new { htmlAttributes = new { @class = "form-control", @placeholder = "agungb_d" } })
+                    @Html.ValidationMessageFor(model => model.User, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-12">
+                    <input type="button" id="btn-getSession" value="Get Session" class="btn btn-primary" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-8">
+                    <input type="text" id="ticket-url" class="form-control qlik-url" />
+                </div>
+                <div class="col-md-4">
+                    <input type="button" id="btn-go" value="Go" class="btn btn-primary" />
+                </div>
+            </div>
+        }
+    </div>
+</div>
