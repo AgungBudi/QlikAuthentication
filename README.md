@@ -10,7 +10,6 @@ Prerequisite:
 Qlik Session will only work if the Qlik Server is one domain of web-app. Injecting session cookie to different domain is prohibited by W3 standard. I am thinking of using Reverse Proxy so user only point to a single domain for both web-app and Qlik Server:
 
 Example:
-qlikserver.web-url.com
-application.web-url.com
+qlikserver.web-url.com and application.web-url.com
 
 As above servers are behind reverse proxy, it means we can inject same cookie for both application servers.
